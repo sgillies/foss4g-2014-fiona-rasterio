@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="571.27136"
+   height="548.90283"
+   id="svg19065"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="py-js-c.svg"
+   inkscape:export-filename="/Users/sean/Desktop/py-js-c.png"
+   inkscape:export-xdpi="126.03"
+   inkscape:export-ydpi="126.03">
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="756"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="1.3633244"
+     inkscape:cx="298.10016"
+     inkscape:cy="342.33805"
+     inkscape:window-x="-4"
+     inkscape:window-y="0"
+     inkscape:current-layer="layer1"
+     height="449.9px"
+     width="471.27136px"
+     showgrid="false"
+     inkscape:window-maximized="0"
+     inkscape:showpageshadow="false"
+     showborder="false"
+     fit-margin-top="50"
+     fit-margin-left="50"
+     fit-margin-right="50"
+     fit-margin-bottom="50" />
+  <defs
+     id="defs19067" />
+  <g
+     transform="matrix(1.5533,0,0,1.5533,-404.1405,-160.27255)"
+     id="layer1">
+    <path
+       d="m 300,400 c 0,55.22847 -44.77153,100 -100,100 -55.22847,0 -100,-44.77153 -100,-100 0,-55.22847 44.77153,-100 100,-100 55.22847,0 100,44.77153 100,100 z"
+       transform="translate(244.0714,-76.32906)"
+       style="fill:#ffff00;fill-opacity:0.5;fill-rule:nonzero;stroke:#000000;stroke-width:1.39999998;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path11857"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 300,400 c 0,55.22847 -44.77153,100 -100,100 -55.22847,0 -100,-44.77153 -100,-100 0,-55.22847 44.77153,-100 100,-100 55.22847,0 100,44.77153 100,100 z"
+       transform="translate(193.0714,-163.9285)"
+       style="fill:#00ffff;fill-opacity:0.5;fill-rule:nonzero;stroke:#000000;stroke-width:1.39999998;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path11859"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 300,400 c 0,55.22847 -44.77153,100 -100,100 -55.22847,0 -100,-44.77153 -100,-100 0,-55.22847 44.77153,-100 100,-100 55.22847,0 100,44.77153 100,100 z"
+       transform="translate(295.0715,-163.9285)"
+       style="fill:#ff00ff;fill-opacity:0.5;fill-rule:nonzero;stroke:#000000;stroke-width:1.39999998;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path11861"
+       inkscape:connector-curvature="0" />
+    <text
+       x="496.56934"
+       y="211.24297"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:0.5;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       id="text11867"
+       xml:space="preserve"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6109"
+         x="496.56934"
+         y="211.24297">Anonymous</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6111"
+         x="496.56934"
+         y="229.3206">functions</tspan></text>
+    <text
+       x="419.9881"
+       y="368.70352"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:0.5;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       id="text11871"
+       xml:space="preserve"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6168"
+         x="419.9881"
+         y="368.70352">Speed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:116.99999571%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       x="416.56555"
+       y="184.18015"
+       id="text5502"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6137"
+         x="416.56555"
+         y="184.18015">GC,</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6139"
+         x="416.56555"
+         y="202.25778">1st class</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6141"
+         x="416.56555"
+         y="220.33543">funcs</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.45097534px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:117%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;opacity:0.50000000000000000;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       x="302.28802"
+       y="207.31898"
+       id="text6075"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6170">Listcomps,</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6172">generators,</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6174">iterators</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:116.99999571%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       x="489.75983"
+       y="304.59656"
+       id="text6083"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6135"
+         x="489.75983"
+         y="304.59656">{};</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:116.99999571%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       x="368.39902"
+       y="306.95764"
+       id="text6091"
+       sodipodi:linespacing="117%"><tspan
+         sodipodi:role="line"
+         id="tspan6095"
+         x="368.39902"
+         y="306.95764">Ints</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.45097542px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma Bold"
+       x="420.34335"
+       y="271.06885"
+       id="text6143"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6145"
+         x="420.34335"
+         y="271.06885">Floats</tspan></text>
+  </g>
+</svg>
