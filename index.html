@@ -170,9 +170,10 @@
     <section>
     <h3>The good parts</h3>
     <img src="img/py-js-c.png" style="border:none">
-    </section>
 
     <aside class="notes">
+    What do I mean by the good parts of Python?
+
     I've made a Venn diagram of unique good features of three common languages.
     The "good parts" of each. It's not exhaustive, I'm leaving out some good
     parts.
@@ -194,6 +195,7 @@
     Bottom line is that GDAL's Python bindings aren't a good match for the 
     good parts of Python.
     </aside>
+    </section>
 
     <section>
     <h2>OGR Example</h2>
@@ -214,7 +216,14 @@ poly = ogr.Geometry(ogr.wkbPolygon)
 poly.AddGeometry(ring)</code></pre>
 
 <small>[source: http://pcjericks.github.io/py-gdalogr-cookbook/]</small>
-    </section>
+
+<aside class="notes">
+This is the classic way to create an osgeo.ogr geometry object.
+
+It could be tightened up a bit.
+</aside>
+
+  </section>
 
     <section>
     <h2>Analogy</h2>
@@ -231,6 +240,15 @@ for i in range(100):
 # Python style
 nums = list(range(100))
     </code></pre>
+
+<aside class="notes">
+I've got an analogy to Python list construction.
+
+First, I'm showing the most imperative, C-like way of making a Python list of the first 100 numbers.
+
+Next, the most idiomaticly Python way of doing it.
+</aside>
+
     </section>
 
     <section>
@@ -246,6 +264,14 @@ vs
 $ python -m timeit -s "nums=list(xrange(1000))"
 100000000 loops, best of 3: 0.0108 usec per loop
 </code></pre>
+
+<aside class="notes">
+The idomaticly Python way is faster. ridiculously faster!
+
+Do this in your code.
+
+Provide APIs like this in your Python packages.
+</aside>
     </section>
 
     <section>
