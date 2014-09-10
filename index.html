@@ -4,14 +4,10 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Rasterio</title>
-
-        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-        <meta name="author" content="Hakim El Hattab">
+        <title>Fiona and Rasterio</title>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/reveal.min.css">
@@ -46,39 +42,52 @@
       data-background="img/rgba30.png" 
       data-background-size="1000px">
 
-        <h1>Rasterio</h1>
-        <h2>Geospatial Raster Data Access for Programmers
-        and Future Programmers</h2>
+        <h1>Fiona and Rasterio</h1>
+        <h2>Data Access for Python Programmers and Future Python Programmers</h2>
         <p>Sean Gillies @Mapbox</p>
-        <p><small>SciPy 2014 &#8729; Austin &#8729; July 9</small></p>
+        <p><small>FOSS4G 2014 &#8729; Portland &#8729; September 10</small></p>
 
     <aside class="notes">
     Hi! Good morning! Thank you very much for coming to this sessiom. My name
     is Sean Gillies, I work at Mapbox. 
     I've been a Python programmer since 2001 and a GIS analyst and programmer
     since 1999, with a séjour in the digital classics from 2006 to 2013.
-    This is my first SciPy and I'm super happy to be here. 
+    I've been coming to FOSS4G off and on since it was the MapServer User
+    Meeting.
     </aside>
 
     </section>
 
     <section>
     <!-- What I'm going to tell you -->
-    <h2>Programming with Raster data</h2>
+    <h2>New Python packages</h2>
     <ul>
-      <li class="fragment">What's the Mapbox Satellite team up to?</li>
-      <li class="fragment">Why Linux, GDAL, and SciPy?</li>
-      <li class="fragment">Why a new Python geospatial data library?</li>
-      <li class="fragment">What is Rasterio and how do you use it?</li>
+      <li>Fiona and Rasterio are Python interfaces to OGR and GDAL</li>
+      <li>Each are native GeoJSON speakers</li>
+      <li>Each embrace the good parts of Python</li>
     </ul>
 
     <aside class="notes">
-    My talk is organized around four questions.
+    My talk is about new Python geospatial software and a double challenge in developing it.
+    
+    Why are we writing new geodata access libraries?
 
-    What's the problem?
+    How do you use it yourselves?
+    </aside>
+    </section>
 
-    What's the approach?
 
+    <section>
+    <!-- What I'm going to tell you -->
+    <h2>The Double Challenge</h2>
+    <ul>
+      <li class="fragment">Helping experienced Python programmers learn GIS concepts</li>
+      <li class="fragment">Helping GIS experts learn to be better Python programmers</li>
+    </ul>
+
+    <aside class="notes">
+    My talk is about new Python geospatial software and a double challenge in developing it.
+    
     Why are we writing new geodata access libraries?
 
     How do you use it yourselves?
@@ -89,14 +98,14 @@
     <section
       data-background="img/8871945777_603bfd7d9f_b.jpg"
       data-background-size="1024px">
-    <h2>Mapbox Cloudless Atlas</h2>
+    <h2>Mapbox Cloudless</h2>
 
     <aside class="notes">
     The Mapbox Satellite Team is making a Cloudless Landsat mosaic of the
     world.
 
     This is a base layer for maps created by Mapbox users. Its primary
-    requirements are to be current and to look good. We'll probably be working
+    requirements are to be current and to look good. We'll be working
     on products that are better for science in the future.
 
     This is the project that drives a lot of Rasterio development.
@@ -105,189 +114,13 @@
     </aside>
     </section>
 
-    <!-- Scene sources -->
-    <section
-      data-background="img/8871364724_5d48143feb_o.jpg"
-      data-background-size="1024px">
-    <h2>From cloudy scenes</h2>
-    
-    <aside class="notes">
-    We're making the cloudless atlas from generally cloudy scenes.
-
-    The first technical problem is getting the clouds out. 
-
-    Everywhere.
-
-    With minimal operator intervention.
-
-    </section>
-
-    <!-- Scene sources -->
-    <section>
-    <h2>Declouding</h2>
-    <ul>
-      <li>Scene selection (season and cloudiness)</li>
-      <li>Atmospheric correction and reflectance normalization</li>
-      <li>Score every pixel of every source image</li>
-      <li class="fragment">No cutlines</li>
-      <li class="fragment">Pixel by pixel</li>
-    </ul>
-
-    <aside class="notes">
-    Cutlines and other spatial interventions don't scale well.
-
-    Cloudless Atlas needs to scale, because we want to run it almost
-    continually as new data comes in.
-
-    Pixel by pixel approaches scale trivially.
-
-    They worked very well for MODIS imagery. They won't work for very high
-    resolution imagery? Will they work for Landsat? At the outset we weren't
-    sure.
-    </aside>
-    </section>
-
-    <!-- good pixels sorted up -->
-    <section
-      data-background="img/8870292339_517612af6d_k.jpg"
-      data-background-size="1024px"
-      data-background-position="top">
-    <h2>High scoring pixels</h2>
-
-    <aside class="notes">
-    This is our approach right now: score every pixel and sort the best
-    ones to the top. The cloudless atlas tiles are formed from the best
-    pixels.
-
-    Shown here are the "best" by some measure (darkest in this case) pixels
-    of all the Landsat scenes shown in the previous slide.
-    </aside>
-    </section>
-
-    <!-- bad pixels sorted down -->
-    <section
-      data-background="img/8870292339_517612af6d_k.jpg"
-      data-background-size="1024px"
-      data-background-position="bottom">
-    <h2>Low scoring pixels</h2>
-
-    <aside class="notes">
-    These are the worst (brightest) pixels.
-
-    Sorting is fairly cheap (no worse than NlogN - N being the number of
-    input scenes), so this is going to scale
-    reasonably well.
-    </aside>
-    </section>
 
     <section>
-    <h2>Earth is a cloudy planet</h2>
+    <h2>We have interesting problems</h2>
     <ul>
-      <li>50-70% mean cloud cover over land</li>
-      <li>Landsat 8 doesn't yet have cloud-free imagery everywhere</li>
-      <li class="fragment">So we also use Landsat 7</li>
-    </ul>
-
-    <aside class="notes">
-    This is the lead in to our second technical problem. We have to use
-    Landsat 7 because we don't yet have enough L8 coverage to make a 
-    global cloudless mosaic. And Landsat 7 has some problems.
-    </section>
-
-    <section>
-    <h2>Scan Line Correction</h2>
-    <img src="img/products_slc_graphic_s.jpg" width="200%">
-    
-    <aside class="notes">
-    Landsat 7's scan line corrector, which accounts for the forward motion of 
-    the satellite as it scans, failed permanently on May 31, 2003. Imagery 
-    acquired after this time has zig-zaging lines which both overlap and miss
-    portions of the landscape.
-    </aside>
-    </section>
-
-    <section
-      data-background="img/8871307188_29f0c482f6_b.jpg"
-      data-background-size="1024px">
-
-    <aside class="notes">
-    SLC-Off imagery has characteristic no-data strips, increasing in 
-    breadth toward the edges
-    of the scene. Middles of the scenes can have full coverage.
-    </aside>
-    </section>
-
-    <section>
-    <h2>Landsat SLC-Off Imagery</h2>
-    <ul>
-      <li>Since May 2003</li>
-      <li>Without it we don't have enough cloudless pixels</li>
-      <li class="fragment">It complicates things</li>
-      <li class="fragment">A lot</li>
-    </ul>
-
-    <aside class="notes">
-    Many regions are cloudy enough that the best pixels are found only in
-    SLC-Off scenes. 
-
-    Putting SLC-Off imagery into our declouding pipeline leads to our 
-    second interesting technical problem.
-    </section>
-
-    <section
-      data-background="img/8871945763_17ff3e37f4_b.jpg"
-      data-background-size="1024px">
-    <h2>Bands</h2>
-    
-    <aside class="notes">
-    Instead of nodata bands we have bands of seasonal or interannual 
-    incongruity. 
-    
-    It can be
-    especially noticeable in agricultural regions: manifesting as
-    alternating strips of vigorous and non-vigorous vegetation (or bare
-    ground).
-    </section>
-
-    <section>
-    <h2>Debanding</h2>
-    <ul>
-      <li class="fragment">Transform the image using a Fast Fourier Transform</li>
-      <li class="fragment">Locate the artifact peaks</li>
-      <li class="fragment">Remove the artifacts</li>
-      <li class="fragment">Transform the image back using an inverse transform</li>
-    </ul>
-
-    <aside class="notes">
-    This is our approach to the debanding problem.
-
-    Locating the artifact peaks is quite difficult in practice when there are 
-    multiple SLC-off images going in to our product.
-
-    Modeling the orientation of the SLC-off gaps helps a lot.
-    </aside>
-    </section>
-
-    <!--section>
-    <h2>Debanding (2)</h2>
-    <ul>
-      <li>Uses numpy.fft, scikit-image, etc.</li>
-      <li>And orbital information</li>
-      <li>Multiple iterations needed to prevent addition of image bugs</li>
-      <li>Details: <a href="https://www.mapbox.com/blog/debanding-the-world/">https://www.mapbox.com/blog/debanding-the-world/</a></li>
-    </ul>
-
-    <aside class="notes">
-    Modeling the orientation of SLC-off bands lets us focus on just those particular
-    peaks.
-    </aside>
-    </section-->
-
-    <section>
-    <h2>Solving the problems</h2>
-    <ul>
-      <li>We have no off-the-shelf solutions</li>
+      <li>Off-the-shelf solutions are scarce</li>
       <li>Trial and error is involved</li>
+      <li class="fragment">We need new software</li>
     </ul>
 
     <aside class="notes">
@@ -297,11 +130,11 @@
     </section>
 
     <section>
-    <h2>Cloudless Atlas Software Requirements</h2>
+    <h2>Software requirements</h2>
     <ol>
-      <li class="fragment">Rapid prototyping and iteration</li>
-      <li class="fragment">Proven algorithms and drivers</li>
-      <li class="fragment">Ability to deploy to 100s of servers</li>
+      <li class="fragment">Allow rapid prototyping and iteration</li>
+      <li class="fragment">Use dependable algorithms</li>
+      <li class="fragment">Scale out to many computers</li>
     </ol>
 
     <aside class="notes">
@@ -311,7 +144,7 @@
     </section>
 
     <section>
-    <h2>Software stack</h2>
+    <h2>Fulfilling requirements</h2>
     <ul>
       <li>1 and 3 argue for open source</li>
       <li>1 argues for a high-level language with handy multi-dimensional array syntax</li>
@@ -324,36 +157,141 @@
     <section>
     <h2>GDAL Python bindings?</h2>
     <ul>
-      <li>Very C++ style interface</li>
-      <li>Failure to keep SWIG and C issues in mind results in crashing programs</li>
+      <li>They've served us long and well</li>
+      <li>But they don't fit well with the good parts of Python</li>
       <li class="fragment">We can do better</li>
     </ul>
 
     <aside class="notes">
-    The last thing the stack needs is software to read and write geospatial
-    raster data files like GeoTIFFs.
-
-    And reproject them.
-
-    GDAL has Python bindings but they are not IMHO production grade.
-    They have terrible gotchas.
-
-    They also feel too much like C++. That's no fun. programming at a higher
-    level and high productivity are our requirements, remember?
+    We can do better while keeping the power of the GDAL and OGR libraries.
     </aside>
     </section>
 
     <section>
-    <h2>Scipy-style raster data library requirements</h2>
-    <ol>
-      <li>Read/write ndarrays from/to data files</li>
-      <li>Python types, protocols and idioms instead of C/C++ ones</li>
-      <li>Free programmers from having to think about C/C++ (memory management, pointers, &c)</li>
-    </ol>
+    <h3>The good parts</h3>
+    <img src="img/py-js-c.png" style="border:none">
+    </section>
+
+    <aside class="notes">
+    I've made a Venn diagram of unique good features of three common languages.
+    The "good parts" of each. It's not exhaustive, I'm leaving out some good
+    parts.
+    We can argue over whether I got these exactly right and I hope we will.
+    
+    The image is derived from http://commons.wikimedia.org/wiki/File:Venn_diagram_cmyk.svg.
+
+    Anybody recognize the yellow language? I'll give you a hint: the other
+    two are implemented in it. Right: C/C++.
+
+    Anybody recognize the magenta language? Right, javascript.
+
+    Anybody recognize the blue language? Right, Python.
+
+    The good parts of Python are lacking in Javascript and C. Wrapper
+    generators like SWIG give you the features in the overlap between Python
+    and C, but have a hard time with the good parts of the dynamic language.
+    
+    Bottom line is that GDAL's Python bindings aren't a good match for the 
+    good parts of Python.
+    </aside>
+
+    <section>
+    <h2>OGR Example</h2>
+    <pre><code data-trim>
+from osgeo import ogr
+
+# Create ring
+ring = ogr.Geometry(ogr.wkbLinearRing)
+ring.AddPoint(1179091.1646903288, 712782.8838459781)
+ring.AddPoint(1161053.0218226474, 667456.2684348812)
+ring.AddPoint(1214704.933941905, 641092.8288590391)
+ring.AddPoint(1228580.428455506, 682719.3123998424)
+ring.AddPoint(1218405.0658121984, 721108.1805541387)
+ring.AddPoint(1179091.1646903288, 712782.8838459781)
+
+# Create polygon
+poly = ogr.Geometry(ogr.wkbPolygon)
+poly.AddGeometry(ring)</code></pre>
+
+<small>[source: http://pcjericks.github.io/py-gdalogr-cookbook/]</small>
     </section>
 
     <section>
-    <h2>Rasterio's Design</h2>
+    <h2>Analogy</h2>
+    <pre><code data-trim>
+# C style
+nums = []
+for i in range(100):
+    nums.append(i)
+    </code></pre>
+
+    vs
+
+    <pre><code data-trim>
+# Python style
+nums = list(range(100))
+    </code></pre>
+    </section>
+
+    <section>
+    <h2>Not just less code – faster</h2>
+    <pre><code class="bash" data-trim>
+$ python -m timeit -s "nums=[]" "for i in xrange(1000):" "  nums.append(i)"
+10000 loops, best of 3: 76.4 usec per loop
+</code></pre>
+
+vs
+
+<pre><code class="bash" data-trim>
+$ python -m timeit -s "nums=list(xrange(1000))"
+100000000 loops, best of 3: 0.0108 usec per loop
+</code></pre>
+    </section>
+
+    <section>
+    <h2>Literal syntax: {} for geometries</h2>
+    <pre><code class="python" data-trim>
+# Create polygon
+poly = {
+    'type': 'Polygon',
+    'coordinates': [[
+        (1179091.1646903288, 712782.8838459781),
+        (1161053.0218226474, 667456.2684348812),
+        (1214704.933941905, 641092.8288590391),
+        (1228580.428455506, 682719.3123998424),
+        (1218405.0658121984, 721108.1805541387),
+        (1179091.1646903288, 712782.8838459781) ]]}
+    </code></pre>
+    30X faster than OGR with AddPoint()
+    </section>
+
+    <section>
+    <h2>Pay only for what you eat</h2>
+    <pre><code class="python" data-trim>
+# This is "dumb" data.
+data = {
+    'type': 'Polygon',
+    'coordinates': [[
+        (1179091.1646903288, 712782.8838459781),
+        ...
+        (1179091.1646903288, 712782.8838459781) ]]}
+
+# When you need spatial methods, bring in Shapely.
+from shapely.geometry import shape
+print shape(data).buffer(100.0).area
+    </code></pre>
+
+    </section>
+
+    <section>
+    <h2>Winning the Double Challenge</h2>
+    <ul>
+    <li class="fragment">Python programmers get GIS data access via familiar Python idioms (dicts, iterators, &c.)</li>
+    <li class="fragment">Future Python programmers learn to do things in the fast and effective Python way</li>
+    </section>
+
+    <section>
+    <h2>Design of Fiona and Rasterio</h2>
     <ul>
       <li>A Python package at the top</li>
       <li>Extension modules (using Cython) in the middle</li>
@@ -369,16 +307,16 @@
     </section>
 
     <section>
-    <h2>Reading data</h2>
-    <pre><code data-trim>
+    <h2>Reading raster data</h2>
+    <pre><code class="python" data-trim>
 import rasterio
 
 with rasterio.open(path) as src:
-    bands = [src.read_band(i) for i in src.indexes]
+    data = src.read()
     </code></pre>
 
     <ul><li><code>open()</code> gives you a file-like dataset object</li>
-    <li><code>read_band()</code> gives you a Numpy ndarray</li>
+    <li><code>read()</code> gives you a Numpy ndarray</li>
     <li>Read windows of data with extended slice-like syntax</li></ul>
 
     <aside class="notes">
@@ -389,39 +327,62 @@ with rasterio.open(path) as src:
     </section>
 
     <section>
-    <h2>Writing data</h2>
-    <pre><code data-trim>
+    <h2>Reading vector data</h2>
+    <pre><code class="python" data-trim>
+import fiona
+
+with fiona.open(path) as src:
+    first = next(src)
+    </code></pre>
+
+    <ul><li><code>open()</code> gives you a file-like iterator</li>
+    <li><code>next()</code> gives you the next feature record from the iterator</li>
+    <li>Records are Python dicts</li></ul>
+    </section>
+
+    <section>
+    <h2>Writing raster data</h2>
+    <pre><code class="python" data-trim>
 kwargs = src.meta
 
 with rasterio.open(path, 'w', **kwargs) as dst:
-    for i, arr in zip(dst.indexes, bands):
-        dst.write_band(i, arr)
+    dst.write(arr)
     </code></pre>
 
     <ul><li>Get keyword args needed to open a dataset for writing from another dataset</li>
-    <li><code>write_band()</code> takes an ndarray</li>
+    <li><code>write()</code> takes an ndarray</li>
     <li>You can also write to windows of a dataset</li></ul>
 
-    <aside class="notes">
-    Rasterio is geared for band-interleaved data.
+    </section>
 
-    New read() method coming in 0.9.
-    </aside>
+    <section>
+    <h2>Writing vector data</h2>
+    <pre><code class="python" data-trim>
+kwargs = src.meta
+
+with fiona.open(path, 'w', **kwargs) as dst:
+    dst.write(record)
+    </code></pre>
+
+    <ul><li>Get keyword args needed to open a dataset for writing from another dataset</li>
+    <li><code>write()</code> takes a feature record dict</li>
+
     </section>
 
     <section>
     <h2>Georeferencing</h2>
-    Rasterio follows the lead of pyproj
-    <pre><code data-trim>
+    Fiona and Rasterio follow the lead of pyproj
+    <pre><code class="python" data-trim>
 >>> import rasterio
->>> src = rasterio.open('rasterio/tests/data/RGB.byte.tif')
+>>> src = rasterio.open('tests/data/RGB.byte.tif')
 >>> src.crs
 {'units': 'm', 'zone': 18, 'ellps': 'WGS84', 'proj': 'utm', 'no_defs': True}
     </code></pre>
+    PROJ.4 items as a dict.
     </section>
 
     <section>
-    <h2>rasterio.features</h2>
+    <h2>rasterio.features module</h2>
     <ul><li><code>rasterio.features.shapes()</code> yields all the features of an array as GeoJSON-like objects</li>
     <li><code>rasterio.features.rasterize()</code> "burns" GeoJSON-like objects into an array</li>
     <li>Dicts, iterators, tuples, ndarrays</li>
@@ -437,45 +398,66 @@ with rasterio.open(path, 'w', **kwargs) as dst:
     </section>
 
     <section>
-    <h2>rasterio.warp</h2>
+    <h2>rasterio.warp module</h2>
     <ul><li><code>rasterio.warp.reproject()</code> maps elements of one array to another, using cartographic projections</li>
     <li>No datasets or layers required</li>
     <li>Data created in non-GIS programs can be reprojected for use with GIS programs</li></ul>
     </section>
 
     <section>
-    <!-- What I told you -->
-    <h2>Conclusion</h2>
-    <ul>
-      <li class="fragment">The Mapbox Satellite team has interesting problems</li>
-      <li class="fragment">Linux, Python, Numpy, Scipy, GDAL, and Rasterio are big parts of the solutions</li>
-      <li class="fragment">Rasterio aims to make GIS data more accessible to Python programmers</li>
-      <li class="fragment">And help GIS analysts learn important Python protocols and idioms</li>
-    </ul>
+    <h2>Command Line Fun</h2>
+    <pre><code class="bash" data-trim>
+$ rio --help
+Usage: rio [OPTIONS] COMMAND [ARGS]...
 
-    <aside class="notes">
-    In conclusion.
-    </aside>
-    </section>
+  Rasterio command line interface.
 
-    <section
-      data-background="img/rgba30.png"
-      data-background-size="1000px">
-    <h1>Rasterio</h1>
-    <a href="https://github.com/mapbox/rasterio">https://github.com/mapbox/rasterio</a>
+Options:
+  -v, --verbose  Increase verbosity.
+  -q, --quiet    Decrease verbosity.
+  --help         Show this message and exit.
+
+Commands:
+  bounds     Write bounding boxes to stdout as GeoJSON.
+  info       Print information about a data file.
+  insp       Open a data file and start an interpreter.
+  merge      Merge a stack of raster datasets.
+  shapes     Write the shapes of features.
+  transform  Transform coordinates.
+    </code></pre>
     </section>
 
     <section>
-    <h2>Debanding Blog Post</h2>
-    <a href="https://www.mapbox.com/blog/debanding-the-world/">https://www.mapbox.com/blog/debanding-the-world/</a> by Amit Kapadia
+    <h2>rio.shapes | geojsonio</h2>
+    <pre><code class="bash" data-trim>
+$ rio shapes /tests/data/shade.tif --precision 5 \
+> | underscore extract features.112 \
+> | geojsonio
+    </code></pre>
+    Assists from underscore-cli and geojson-cli
     </section>
 
     <section
-      data-background="img/rgba30.png" 
-      data-background-size="1000px">
-      <h2>Thank You!</h2>
-      <p><a href="https://twitter.com/sgillies">@sgillies</a></p>
-      <p><a href="mailto:sean@mapbox.com">sean@mapbox.com</a></p>
+      data-background="img/shade.png"
+      data-background-size="800px">
+    </section>
+
+    <section>
+    <h2>New Releases</h2>
+    <ul>
+      <li class="fragment">Fiona 1.2</li>
+      <li class="fragment">Rasterio 0.13</li>
+      <li class="fragment">Shapely 1.4</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Thanks</h2>
+    <ul>
+      <li>Mapbox satellite team (Chris, Charlie, Amit, Bruno, Camilla)</li>
+      <li>Asger Petersen, Mike Toews, Brendan Ward, Kelsey Jordahl, René Buffat, Jacob Wasserman, Oliver Tonnhofer, Joshua Arnott, Phil Elson, Matt Perry</li>
+      <li>And especially Frank Warmerdam and Even Rouault</li>
+    </ul>
     </section>
 
     <section>
