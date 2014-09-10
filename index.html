@@ -10,7 +10,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
         <!-- For syntax highlighting -->
@@ -65,6 +65,7 @@
       <li>Fiona and Rasterio are Python interfaces to OGR and GDAL</li>
       <li>Each are native GeoJSON speakers</li>
       <li>Each embrace the good parts of Python</li>
+      <li>Each embrace the command line</li>
     </ul>
 
     <aside class="notes">
@@ -294,7 +295,7 @@ poly = {
     <section>
     <h2>Pay only for what you eat</h2>
     <pre><code class="python" data-trim>
-# This is "dumb" data.
+# This is "dumb" data, no methods.
 data = {
     'type': 'Polygon',
     'coordinates': [[
@@ -431,6 +432,20 @@ with fiona.open(path, 'w', **kwargs) as dst:
     </section>
 
     <section>
+    <h2>In the Beginning...</h2>
+    <h2>Was the Command Line</h2>
+    </section>
+
+    <section>
+    <h2>Grep is cool, but</h2>
+    <pre><code class="bash" data-trim>
+$ gdalinfo tests/data/RGB.byte.tif | grep -c '^Band \d'
+3
+    </code></pre>
+    there's gotta be a better way
+    </section>
+
+    <section>
     <h2>Command Line Fun</h2>
     <pre><code class="bash" data-trim>
 $ rio --help
@@ -451,6 +466,39 @@ Commands:
   shapes     Write the shapes of features.
   transform  Transform coordinates.
     </code></pre>
+    </section>
+
+    <section>
+    <h2>rio info</h2>
+    <pre><code class="bash" data-trim>
+$ rio info tests/data/RGB.byte.tif --indent 2 
+{
+  "count": 3,
+  "crs": "EPSG:32618",
+  "dtype": "uint8",
+  "driver": "GTiff",
+  "bounds": [
+    101985.0,
+    2611485.0,
+    339315.0,
+    2826915.0
+  ],
+  "height": 718,
+  "width": 791,
+  "nodata": 0.0
+}    </code></pre>
+    </section>
+
+    <section>
+    <h2>Single items</h2>
+    <pre><code class="bash" data-trim>
+$ rio info tests/data/RGB.byte.tif --count
+3
+$ rio info tests/data/RGB.byte.tif --crs
+EPSG:32618
+$ rio info tests/data/RGB.byte.tif --bounds
+101985.0 2611485.0 339315.0 2826915.0
+</code></pre>
     </section>
 
     <section>
